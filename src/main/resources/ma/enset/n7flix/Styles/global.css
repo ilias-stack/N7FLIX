@@ -23,26 +23,40 @@
     src: url('../Fonts/Montserrat-Light.ttf');
 }
 
-#light{
-    -fx-font-family: "Montserrat Light";
-}
-
-#reg{
+*{
    -fx-font-family: "Montserrat";
+   -fx-text-fill:white;
 }
 
-#bolder{
-   -fx-font-family: "Montserrat Bolder";
+#topBar{
+    -fx-background-color:#262825;
 }
 
-#sbold{
-   -fx-font-family: "Montserrat SBold";
+#body{
+    -fx-background-color:#1c1c1c;
 }
 
-#bold{
-    -fx-font-family: "Montserrat Bold";
+#closeButton {
+    -fx-background-color: #d46b6d;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-font-size: 15px;
 }
 
-#welcomeText {
-    -fx-background-color: linear-gradient(to right, #00ff00, #0000ff); ;
+#closeButton:hover {
+    -fx-background-color: #c84043;
+    -fx-font-size: 15px;
 }
+
+#minimiseButton {
+    -fx-background-color: #7D7159;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-font-size: 15px;
+}
+
+#minimiseButton:hover {
+    -fx-background-color: #796030;
+    -fx-font-size: 15px;
+}
+

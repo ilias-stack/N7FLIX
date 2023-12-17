@@ -1,0 +1,44 @@
+VBox{
+    -fx-background-color:rgba(15, 15, 15, 0.3);
+    -fx-background-radius: 3;
+
+}
+
+Label{
+    -fx-font-size:25;
+   -fx-font-weight:bolder;
+}
+
+TextField{
+    -fx-border-radius:5;
+    -fx-font-size:16;
+    -fx-background-color:rgba(68, 69, 67, 0.31);
+}
+
+TextField:focused{
+    -fx-background-color:rgba(120, 120, 120, 0.5);
+    -fx-border-color: rgba(214, 155, 32, 0.26);
+    -fx-border-width: 1;
+}
+
+Button{
+    -fx-background-color: rgba(235, 205, 19, 0.85);
+    -fx-font-weight:bold;
+    -fx-text-fill:black;
+    -fx-cursor: hand;
+}
+
+Button:hover{
+    -fx-background-radius:50;
+    -fx-background-color: rgba(235, 205, 19, 1);
+}
+
+#signUpLabel{
+    -fx-text-fill: rgba(235, 205, 19, 0.85);
+    -fx-font-size:12;
+}
+
+#signUpLabel:hover{
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
