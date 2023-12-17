@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../Fonts/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat Bolder';
+    src: url('../Fonts/Montserrat-Black.ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat Bold';
+    src: url('../Fonts/Montserrat-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat SBold';
+    src: url('../Fonts/Montserrat-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat Light';
+    src: url('../Fonts/Montserrat-Light.ttf');
+}
+
+#light{
+    -fx-font-family: "Montserrat Light";
+}
+
+#reg{
+   -fx-font-family: "Montserrat";
+}
+
+#bolder{
+   -fx-font-family: "Montserrat Bolder";
+}
+
+#sbold{
+   -fx-font-family: "Montserrat SBold";
+}
+
+#bold{
+    -fx-font-family: "Montserrat Bold";
+}
+
+#welcomeText {
+    -fx-background-color: linear-gradient(to right, #00ff00, #0000ff); ;
+}
