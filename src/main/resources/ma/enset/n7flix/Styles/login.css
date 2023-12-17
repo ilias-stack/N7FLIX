@@ -33,12 +33,43 @@ Button:hover{
     -fx-background-color: rgba(235, 205, 19, 1);
 }
 
-#signUpLabel{
+#signUpLabel,#logInLabel{
     -fx-text-fill: rgba(235, 205, 19, 0.85);
     -fx-font-size:12;
 }
 
-#signUpLabel:hover{
+#signUpLabel:hover,#logInLabel:hover{
     -fx-underline: true;
     -fx-cursor: hand;
 }
+
+DatePicker{
+    -fx-background-color: rgba(235, 205, 19, 1);
+    -fx-color:rgba(68, 69, 67, 1);
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-base: #1d1d1d ;
+    -fx-mark-highlight-color: black ;
+}
+
+.calendar-grid {
+    -fx-background-color: #4d4d4f;
+}
+
+.date-picker .date-cell {
+    -fx-background-color: rgba(68, 69, 67, 1);
+}
+
+.date-picker .date-cell:hover {
+    -fx-background-color: rgba(168, 169, 167, 1);
+}
+
+.date-picker .date-cell:focused {
+    -fx-background-color: rgba(120, 120, 120, 1);
+}
+
+.date-picker > .text-field {
+    -fx-text-fill: black;
+}
+

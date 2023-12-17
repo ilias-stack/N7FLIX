@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.enset.n7flix.page_controllers.LoginController">
+<BorderPane fx:id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.enset.n7flix.page_controllers.SignUpController">
    <top>
       <AnchorPane fx:id="topBar" prefHeight="42.0" prefWidth="628.0" BorderPane.alignment="CENTER">
          <children>
@@ -35,31 +36,46 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="378.0" prefWidth="566.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="452.0" prefWidth="728.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutX="225.0" layoutY="70.0" prefHeight="326.0" prefWidth="276.0">
+            <VBox layoutX="225.0" layoutY="28.0" prefHeight="326.0" prefWidth="276.0">
                <children>
-                  <Label text="Log In">
+                  <Label text="Sign Up">
                      <VBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="usernameField" prefHeight="37.0" prefWidth="236.0" promptText="username or email">
+                  <TextField fx:id="usernameField" prefHeight="37.0" prefWidth="236.0" promptText="Username">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="25.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="passwordField" prefHeight="37.0" prefWidth="236.0" promptText="password">
+                  <TextField fx:id="emailField" prefHeight="37.0" prefWidth="236.0" promptText="Email">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="25.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="passwordField" prefHeight="37.0" prefWidth="236.0" promptText="Password">
                      <VBox.margin>
                         <Insets bottom="15.0" left="20.0" right="20.0" top="25.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button fx:id="logButton" mnemonicParsing="false" onAction="#login" prefHeight="24.0" prefWidth="235.0" text="Log In">
+                  <TextField fx:id="cPasswordField" prefHeight="37.0" prefWidth="236.0" promptText="Confirm password">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <DatePicker fx:id="datePicker" prefHeight="24.0" prefWidth="234.0">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <Button fx:id="signButton" mnemonicParsing="false" onAction="#signup" prefHeight="24.0" prefWidth="235.0" text="Sign Up">
                      <VBox.margin>
                         <Insets left="20.0" top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Label fx:id="signUpLabel" onMouseClicked="#transitionToSignUp" text="Don't have an account? Sign Up">
+                  <Label fx:id="logInLabel" onMouseClicked="#transitionToLogIn" text="Already have an account? Log in">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
