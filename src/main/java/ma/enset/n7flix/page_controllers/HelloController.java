@@ -1,4 +1,4 @@
-package ma.enset.n7flix;
+package ma.enset.n7flix.page_controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
