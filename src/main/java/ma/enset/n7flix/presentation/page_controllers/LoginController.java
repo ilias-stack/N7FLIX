@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import ma.enset.n7flix.Main;
 import ma.enset.n7flix.dao.UserDaoImpl;
 import ma.enset.n7flix.presentation.views.AlertBox;
+import ma.enset.n7flix.presentation.views.HomePage;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -44,9 +45,12 @@ public class LoginController {
 
     @FXML
     protected void login() throws IOException {
-
-        if(!new UserDaoImpl().validCredentials(usernameField.getText(),passwordField.getText())) new AlertBox("Error!","Wrong username or password.");;
-
+        Main.currentUser=new UserDaoImpl().validCredentials(usernameField.getText(),passwordField.getText());
+        if(Main.currentUser ==null) new AlertBox("Error!","Wrong username or password.");
+        else {
+            ((Stage) minimiseButton.getScene().getWindow()).close();
+            new HomePage();
+        };
     }
 
     @FXML

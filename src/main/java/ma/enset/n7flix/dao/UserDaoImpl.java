@@ -6,22 +6,27 @@ import java.sql.*;
 
 public class UserDaoImpl implements UserDao{
     @Override
-    public boolean validCredentials(String identifier, String password) {
+    public User validCredentials(String identifier, String password) {
         Connection connection = DbSingleton.getConnection();
         try{
-            PreparedStatement pst=connection.prepareStatement("select count(*) from users where (email=? or username=?) and password=?");
+            PreparedStatement pst=connection.prepareStatement("select * from users where (email=? or username=?) and password=?");
             pst.setString(1,identifier);
             pst.setString(2,identifier);
             pst.setString(3,password);
             ResultSet resultSet = pst.executeQuery();
-
-            if(resultSet.next()) return resultSet.getInt(1)>0;
-            else return false;
+            while (resultSet.next()){
+                return new User(resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4),
+                        resultSet.getString(5));
+            }
+            return null;
 
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
     @Override
@@ -32,6 +37,8 @@ public class UserDaoImpl implements UserDao{
         pst.setString(2,user.getEmail());
         pst.setString(3,user.getPassword());
         pst.setString(4,user.getBirthDay());
+
+        pst.executeUpdate();
 
         return user;
     }

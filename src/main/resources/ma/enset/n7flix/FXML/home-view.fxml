@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.enset.n7flix.presentation.page_controllers.HomeController">
+    <top>
+        <AnchorPane fx:id="topBar" prefHeight="42.0" prefWidth="628.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="closeButton" layoutX="790.0" layoutY="7.0" onMouseClicked="#closeButtonClick" text="✕">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Label fx:id="minimiseButton" layoutX="764.0" layoutY="7.0" onMouseClicked="#minimiseButtonClick" text="_">
+                    <padding>
+                        <Insets bottom="5.0" left="7.0" right="7.0" top="5.0" />
+                    </padding>
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+            <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="14.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Assets/user.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="52.0" layoutY="13.0" prefHeight="16.0" prefWidth="81.0" fx:id="username" />
+            </children>
+        </AnchorPane>
+    </top>
+   <center>
+      <Label text="HOME PAGE" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="53.0" />
+         </font>
+      </Label>
+   </center>
+</BorderPane>

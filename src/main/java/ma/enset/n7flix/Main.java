@@ -6,11 +6,13 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ma.enset.n7flix.dao.entities.User;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class Main extends Application {
+    public static User currentUser=null;
     @Override
     public void start(Stage stage) throws IOException {
         Image icon = new Image(Objects.requireNonNull(getClass().getResource("/ma/enset/n7flix/Assets/Icon.png")).toExternalForm());
