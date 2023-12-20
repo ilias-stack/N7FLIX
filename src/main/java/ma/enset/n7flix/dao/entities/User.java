@@ -1,13 +1,14 @@
 package ma.enset.n7flix.dao.entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class User {
-    private int id;
+    private Integer id;
     private String username,email,password;
-    private Date birthDay;
+    private String birthDay;
 
-    public User(int id, String username, String email, String password, Date birthDay) {
+    public User(Integer id, String username, String email, String password, String birthDay) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -26,43 +27,27 @@ public class User {
                 '}';
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
-    public Date getBirthDay() {
+    public String getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
-    }
 }

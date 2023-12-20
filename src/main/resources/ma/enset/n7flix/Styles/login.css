@@ -9,13 +9,13 @@ Label{
    -fx-font-weight:bolder;
 }
 
-TextField{
+TextField,PasswordField{
     -fx-border-radius:5;
     -fx-font-size:16;
     -fx-background-color:rgba(68, 69, 67, 0.31);
 }
 
-TextField:focused{
+TextField:focused,PasswordField:focused{
     -fx-background-color:rgba(120, 120, 120, 0.5);
     -fx-border-color: rgba(214, 155, 32, 0.26);
     -fx-border-width: 1;
@@ -65,11 +65,22 @@ DatePicker{
     -fx-background-color: rgba(168, 169, 167, 1);
 }
 
-.date-picker .date-cell:focused {
+.date-picker .date-cell:focused  {
     -fx-background-color: rgba(120, 120, 120, 1);
 }
 
 .date-picker > .text-field {
-    -fx-text-fill: black;
+    -fx-background-color: #262625;
+    -fx-text-fill: grey;
+}
+
+.date-picker > .text-field:focused {
+    -fx-background-color: rgba(120, 120, 120, 1);
+    -fx-text-fill:black;
+}
+
+#errorText{
+    -fx-font-size:13;
+   -fx-font-weight:normal;
 }
 

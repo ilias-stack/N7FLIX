@@ -56,7 +56,8 @@ public class FilmDaoImp implements FilmDao{
         Connection connection = DbSingleton.getConnection();
         try {
             PreparedStatement pst = connection.prepareStatement("SELECT * FROM movies WHERE ID = ?");
-             ResultSet rst = pst.executeQuery();
+            pst.setInt(1,id);
+            ResultSet rst = pst.executeQuery();
             if (rst.next()) {
                 film.setId(rst.getInt("id"));
                 film.setPosterLink(rst.getString("Poster_Link"));
