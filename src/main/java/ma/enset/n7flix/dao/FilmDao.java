@@ -9,6 +9,7 @@ import java.util.List;
 public interface FilmDao {
     List<Film> getAllFilms();
     Film getFilmById(int id);
-
+    List<Film> getFilmsByQuery(String query);
+    List<Film> getFilmsByCategories(String[] categories);
     List<Film> getFromTo(int start ,int end);
 }
