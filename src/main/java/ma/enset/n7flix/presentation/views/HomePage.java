@@ -28,7 +28,6 @@ public class HomePage extends Stage {
 
         this.setTitle("Home");
         this.setScene(scene);
-        this.setAlwaysOnTop(true);
         this.show();
     }
 }

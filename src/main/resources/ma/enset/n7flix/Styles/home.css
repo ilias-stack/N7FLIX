@@ -1,0 +1,87 @@
+#mainContainer{
+    -fx-background-color:#181a19;
+}
+
+#container{
+    -fx-background-color:#1c1c1c;
+}
+
+#topNavigator{
+    -fx-background-color:#262825;
+}
+
+.separator .line{
+    -fx-border-color: grey;
+    -fx-border-width: 0.1;
+}
+
+.topOption{
+    -fx-font-weight:bold;
+    -fx-cursor: hand;
+}
+
+#searchField{
+    -fx-background-color:transparent;
+    -fx-prompt-text-fill: grey;
+    -fx-font-weight:bold;
+}
+
+#genreMenu{
+    -fx-background-color:transparent;
+}
+
+#genreMenu:hover .arrow-button{
+    -fx-color: #ffd60d;
+}
+
+.menu-button .context-menu {
+    -fx-background-color:#1c1c1c;
+}
+
+#sortCheck .box {
+    -fx-shape: "M0,0 L10,0 L10,10 L0,10 Z";
+    -fx-scale-shape: false;
+    -fx-background-color:rgba(120, 120, 120, 0.5);
+}
+
+.pagination > .pagination-control > .control-box {
+    -fx-spacing: 0;
+}
+
+.pagination {
+    -fx-page-information-visible: false;
+}
+
+
+.pagination > .pagination-control > .control-box {
+    -fx-spacing: 0;
+    -fx-font-size: 12;
+    -fx-font-weight:bold;
+}
+
+.pagination > .pagination-control > .control-box > .number-button,
+.pagination > .pagination-control > .control-box > .bullet-button {
+    -fx-background-insets: 0, 1;
+    -fx-background-color: transparent,transparent;
+    -fx-min-width: 30;
+    -fx-min-height: 30;
+    -fx-cursor:hand;
+}
+
+.pagination > .pagination-control > .control-box > .number-button:hover,
+.pagination > .pagination-control > .control-box > .bullet-button:hover{
+    -fx-background-color: #a0862f;
+}
+
+.pagination > .pagination-control > .control-box > .left-arrow-button,
+.pagination > .pagination-control > .control-box > .right-arrow-button{
+    -fx-background-color:rgba(120, 120, 120, 0.5);
+    -fx-min-width: 30;
+    -fx-min-height: 30;
+}
+
+.pagination > .pagination-control > .control-box > .number-button:selected,
+.pagination > .pagination-control > .control-box > .bullet-button:selected{
+    -fx-background-insets: 0;
+    -fx-background-color: blue;
+}
