@@ -13,7 +13,7 @@ import ma.enset.n7flix.Main;
 import ma.enset.n7flix.dao.UserDaoImpl;
 import ma.enset.n7flix.dao.entities.User;
 import ma.enset.n7flix.presentation.views.AlertBox;
-import ma.enset.n7flix.presentation.views.HomePage;
+import ma.enset.n7flix.presentation.views.HomeStage;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -53,7 +53,7 @@ public class SignUpController {
         try {
             Main.currentUser = new UserDaoImpl().createUser(newUser);
             ((Stage) minimiseButton.getScene().getWindow()).close();
-            new HomePage();
+            new HomeStage();
         } catch (SQLException e) {
             new AlertBox("Error!","Email or username already in use.");
         }

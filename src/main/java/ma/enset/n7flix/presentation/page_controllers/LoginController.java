@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import ma.enset.n7flix.Main;
 import ma.enset.n7flix.dao.UserDaoImpl;
 import ma.enset.n7flix.presentation.views.AlertBox;
-import ma.enset.n7flix.presentation.views.HomePage;
+import ma.enset.n7flix.presentation.views.HomeStage;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -49,7 +49,7 @@ public class LoginController {
         if(Main.currentUser ==null) new AlertBox("Error!","Wrong username or password.");
         else {
             ((Stage) minimiseButton.getScene().getWindow()).close();
-            new HomePage();
+            new HomeStage();
         };
     }
 

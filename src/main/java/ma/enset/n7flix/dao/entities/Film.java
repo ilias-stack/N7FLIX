@@ -19,27 +19,15 @@ public class Film {
     private double noOfVotes;
     private double gross;
 
-    public static String[] genres = {
+    public static String[] majorGenres = {
             "DRAMA",
             "ACTION",
             "CRIME",
-            "ADVENTURE",
             "SCI-FI",
-            "WESTERN",
-            "FANTASY",
-            "BIOGRAPHY",
-            "HISTORY",
             "COMEDY",
-            "THRILLER",
             "ANIMATION",
-            "FAMILY",
-            "MYSTERY",
             "ROMANCE",
             "HORROR",
-            "MUSIC",
-            "WAR",
-            "MUSICAL",
-            "FILM-NOIR"
     };
 
     public Film() {
