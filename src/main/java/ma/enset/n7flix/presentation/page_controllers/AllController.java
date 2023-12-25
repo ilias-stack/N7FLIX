@@ -3,17 +3,12 @@ package ma.enset.n7flix.presentation.page_controllers;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import ma.enset.n7flix.dao.FilmDaoImp;
 import ma.enset.n7flix.dao.entities.Film;
-import ma.enset.n7flix.presentation.views.AllPage;
-import ma.enset.n7flix.presentation.views.ForYouPage;
-import ma.enset.n7flix.presentation.views.WatchedPage;
+import ma.enset.n7flix.presentation.views.RatingPage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -131,7 +126,11 @@ public class AllController {
                 Film thisFilm=filmsList.get(filmCount);
                 Group imageView = ControllersHelper.createImageView(moviesGrid,thisFilm.getPosterLink(),thisFilm.getSeriesTitle());
                 imageView.setOnMouseClicked(e->{
-                    System.out.println(thisFilm);
+                    try {
+                        new RatingPage(thisFilm);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 });
                 moviesGrid.add(imageView,col,row);
             }

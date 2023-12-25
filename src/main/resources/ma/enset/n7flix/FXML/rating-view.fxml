@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ma.enset.n7flix.presentation.page_controllers.RatingController">
+   <top>
+      <AnchorPane fx:id="topBar" prefHeight="42.0" prefWidth="630.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="closeButton" layoutX="571.0" layoutY="7.0" onMouseClicked="#closeButtonClick" text="✕">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="minimiseButton" layoutX="545.0" layoutY="7.0" onMouseClicked="#minimiseButtonClick" text="_">
+               <padding>
+                  <Insets bottom="5.0" left="7.0" right="7.0" top="5.0" />
+               </padding>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>
