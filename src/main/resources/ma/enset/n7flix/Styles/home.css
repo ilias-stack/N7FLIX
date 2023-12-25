@@ -85,3 +85,12 @@
     -fx-background-insets: 0;
     -fx-background-color: blue;
 }
+
+.film{
+    -fx-cursor:hand;
+}
+
+.title{
+    -fx-font-weight:bold;
+}
+

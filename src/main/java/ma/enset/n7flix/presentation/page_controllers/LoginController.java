@@ -1,5 +1,6 @@
 package ma.enset.n7flix.presentation.page_controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,7 +36,7 @@ public class LoginController {
 
     @FXML
     protected void closeButtonClick(){
-        ((Stage) closeButton.getScene().getWindow()).close();
+        Platform.exit();
     }
 
     @FXML

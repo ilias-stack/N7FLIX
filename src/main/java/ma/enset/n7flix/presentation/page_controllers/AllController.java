@@ -1,8 +1,15 @@
 package ma.enset.n7flix.presentation.page_controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import ma.enset.n7flix.dao.FilmDaoImp;
 import ma.enset.n7flix.dao.entities.Film;
 import ma.enset.n7flix.presentation.views.AllPage;
 import ma.enset.n7flix.presentation.views.ForYouPage;
@@ -10,7 +17,11 @@ import ma.enset.n7flix.presentation.views.WatchedPage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import static ma.enset.n7flix.presentation.page_controllers.ControllersHelper.navigate;
 
 public class AllController {
     @FXML
@@ -34,10 +45,24 @@ public class AllController {
     @FXML
     private Label foryouButton,watchedButton;
 
+    @FXML
+    private GridPane moviesGrid;
+
+    private List<Film> filmsList=null;
+
     List<String> selectedGenres = new ArrayList<>();
+
+    int currentPage=0;
 
     @FXML
     private void initialize(){
+
+        // populate grid block
+        {
+            filmsList = new FilmDaoImp().getAllFilms();
+            gridFiller();
+        }
+
         // populate genresMenu block
         {
             for (String genre : Film.majorGenres) {
@@ -60,14 +85,14 @@ public class AllController {
 
         foryouButton.setOnMouseClicked(e-> {
             try {
-                navigate(foryouButton.getText());
+                navigate(foryouButton.getText(),minimiseButton);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
         watchedButton.setOnMouseClicked(e -> {
             try {
-                navigate(watchedButton.getText());
+                navigate(watchedButton.getText(),minimiseButton);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -75,37 +100,55 @@ public class AllController {
 
     }
 
+
     private void seachEvent(String text){
-        System.out.println("Searching for : "+text);
+        filmsList = new FilmDaoImp().getFilmsByQuery(text);
+        pagination.setPageCount((int) Math.ceil(filmsList.size()/30f));
+        gridFiller();
     }
 
     private void sort(boolean isSelected){
-        System.out.println(isSelected);
+        if(isSelected)
+            filmsList.sort(Comparator.comparingInt(Film::getReleasedYear).reversed());
+
+        else Collections.shuffle(filmsList);
+
+        gridFiller();
+
     }
 
     private void paginationEvent(int pageIndex){
-        System.out.println("Current page is "+pageIndex);
+        currentPage = pageIndex;
+        gridFiller();
+    }
+
+    private void gridFiller(){
+        pagination.setPageCount((int) Math.ceil(filmsList.size()/30f));
+
+        moviesGrid.getChildren().clear();
+        for (int row = 0,filmCount=30*currentPage; row < moviesGrid.getRowCount() && filmCount<filmsList.size(); row++) {
+            for (int col = 0; col < moviesGrid.getColumnCount() && filmCount<filmsList.size(); col++,filmCount++) {
+                Film thisFilm=filmsList.get(filmCount);
+                Group imageView = ControllersHelper.createImageView(moviesGrid,thisFilm.getPosterLink(),thisFilm.getSeriesTitle());
+                imageView.setOnMouseClicked(e->{
+                    System.out.println(thisFilm);
+                });
+                moviesGrid.add(imageView,col,row);
+            }
+        }
+
     }
 
     private void genresFilter(){
-        System.out.println(selectedGenres);
+        filmsList = ControllersHelper.sortByGenres(filmsList,selectedGenres);
+        gridFiller();
     }
 
-    private void navigate(String page) throws IOException {
-        if(page.equals("ALL"))
-            ((Stage) minimiseButton.getScene().getWindow()).setScene(new AllPage());
 
-        else if(page.equals("FOR YOU"))
-            ((Stage) minimiseButton.getScene().getWindow()).setScene(new ForYouPage());
-
-        else
-            ((Stage) minimiseButton.getScene().getWindow()).setScene(new WatchedPage());
-
-    }
 
     @FXML
     protected void closeButtonClick(){
-        ((Stage) closeButton.getScene().getWindow()).close();
+        Platform.exit();
     }
 
     @FXML

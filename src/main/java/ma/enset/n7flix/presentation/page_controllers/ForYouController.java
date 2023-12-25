@@ -1,5 +1,6 @@
 package ma.enset.n7flix.presentation.page_controllers;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -8,6 +9,8 @@ import ma.enset.n7flix.presentation.views.ForYouPage;
 import ma.enset.n7flix.presentation.views.WatchedPage;
 
 import java.io.IOException;
+
+import static ma.enset.n7flix.presentation.page_controllers.ControllersHelper.navigate;
 
 public class ForYouController {
     @FXML
@@ -23,35 +26,25 @@ public class ForYouController {
     private void initialize(){
         allButton.setOnMouseClicked(e-> {
             try {
-                navigate(allButton.getText());
+                navigate(allButton.getText(),minimiseButton);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
         watchedButton.setOnMouseClicked(e-> {
             try {
-                navigate(watchedButton.getText());
+                navigate(watchedButton.getText(),minimiseButton);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
     }
 
-    private void navigate(String page) throws IOException {
-        if(page.equals("ALL"))
-            ((Stage) minimiseButton.getScene().getWindow()).setScene(new AllPage());
 
-        else if(page.equals("FOR YOU"))
-            ((Stage) minimiseButton.getScene().getWindow()).setScene(new ForYouPage());
-
-        else
-            ((Stage) minimiseButton.getScene().getWindow()).setScene(new WatchedPage());
-
-    }
 
     @FXML
     protected void closeButtonClick(){
-        ((Stage) closeButton.getScene().getWindow()).close();
+        Platform.exit();
     }
 
     @FXML
