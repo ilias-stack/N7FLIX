@@ -83,7 +83,7 @@ public class RatingController {
             ratingSlider.setValue((int) Math.round(ratingSlider.getValue()));
             switch ((int) ratingSlider.getValue()){
                 case 1:
-                    indicationLabel.setText("I hate it!");
+                    indicationLabel.setText("I hate it !");
                     break;
                 case 2:
                     indicationLabel.setText("I didn't like it.");
