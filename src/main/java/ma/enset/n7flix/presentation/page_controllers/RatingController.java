@@ -2,14 +2,19 @@ package ma.enset.n7flix.presentation.page_controllers;
 
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import ma.enset.n7flix.Main;
+import ma.enset.n7flix.dao.RatingDaoImpl;
 import ma.enset.n7flix.dao.entities.Film;
+import ma.enset.n7flix.presentation.views.AlertBox;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class RatingController {
@@ -58,6 +63,7 @@ public class RatingController {
     @FXML
     private Label indicationLabel;
 
+    private RatingDaoImpl ratings=new RatingDaoImpl();
 
 
     private Film currentFilm = null;
@@ -78,6 +84,8 @@ public class RatingController {
         star2Label.setText(currentFilm.getStar2());
         star3Label.setText(currentFilm.getStar3());
         star4Label.setText(currentFilm.getStar4());
+        float thisFilmRating=ratings.getRating(currentFilm.getId(),Main.currentUser.getId());
+        ratingSlider.setValue(thisFilmRating==-1 ? 3 : thisFilmRating*5);
 
         ratingSlider.valueProperty().addListener((observable, oldValue, newValue)->{
             ratingSlider.setValue((int) Math.round(ratingSlider.getValue()));
@@ -103,7 +111,13 @@ public class RatingController {
 
     @FXML
     private void saveRating(){
-        System.out.println(ratingSlider.getValue());
+        ratings.setRating(currentFilm.getId(), Main.currentUser.getId(), (float) (ratingSlider.getValue()/5));
+        try {
+            new AlertBox("Rate saved","Thank you for rating this movie.");
+            ((Stage) closeButton.getScene().getWindow()).close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

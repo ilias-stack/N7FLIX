@@ -102,7 +102,7 @@
                   <Label fx:id="star3Label" layoutX="80.0" layoutY="261.0" styleClass="nameLabel" />
                   <Label fx:id="star4Label" layoutX="80.0" layoutY="278.0" styleClass="nameLabel" />
                   <Slider fx:id="ratingSlider" blockIncrement="1.0" layoutX="209.0" layoutY="334.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="1" showTickLabels="true" snapToTicks="true" value="3.0" />
-                  <Label fx:id="indicationLabel" layoutX="353.0" layoutY="333.0" styleClass="boldTexts" text="It was good." />
+                  <Label fx:id="indicationLabel" layoutX="353.0" layoutY="333.0" styleClass="boldTexts" />
                   <Separator layoutX="14.0" layoutY="303.0" prefHeight="9.0" prefWidth="556.0" />
                   <Label layoutX="13.0" layoutY="333.0" text="Would you rate this movies ?" />
                   <Button layoutX="261.0" layoutY="373.0" mnemonicParsing="false" onAction="#saveRating" text="Vote" />
