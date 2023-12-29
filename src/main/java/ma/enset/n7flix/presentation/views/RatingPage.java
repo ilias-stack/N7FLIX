@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ma.enset.n7flix.Main;
 import ma.enset.n7flix.dao.entities.Film;
+import ma.enset.n7flix.presentation.page_controllers.RatingController;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -24,6 +25,8 @@ public class RatingPage extends Stage {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/ma/enset/n7flix/Styles/global.css")).toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/ma/enset/n7flix/Styles/rating.css")).toExternalForm());
 
+        RatingController controller = fxmlLoader.getController();
+        controller.initData(film);
 
         this.setScene(scene);
         this.setAlwaysOnTop(true);

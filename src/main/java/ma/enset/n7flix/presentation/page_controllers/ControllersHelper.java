@@ -95,6 +95,33 @@ public class ControllersHelper {
         return group;
     }
 
+    static public void setImage(ImageView imageView,String imageUrl) {
+        Image image = new Image(imageUrl, true);
+
+        image.errorProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue)
+                imageView.setImage(new Image(Objects.requireNonNull(ControllersHelper.class.getResource("/ma/enset/n7flix/Assets/placeholder.jpg")).toExternalForm()));
+        });
+
+        imageView.setImage(image);
+        imageView.setPreserveRatio(true);
+
+    }
+
+    public static String fromMinutesToFormatted(int length){
+        String resp = null;
+        int mins=length%60;
+        int hours=length/60;
+
+        if(hours==0) resp = mins+"m";
+
+        else if (mins==0) resp= hours+"h";
+
+        else resp = hours+"h "+mins+"m";
+
+        return resp;
+    }
+
     public static void navigate(String page, Node node) throws IOException {
         if(page.equals("ALL"))
             ((Stage) node.getScene().getWindow()).setScene(new AllPage());

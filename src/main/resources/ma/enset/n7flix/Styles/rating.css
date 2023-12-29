@@ -1,0 +1,85 @@
+.separator .line{
+    -fx-border-color: grey;
+    -fx-border-width: 0.1;
+}
+
+.scroll-bar {
+    -fx-background-color: #1c1c1c;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #7D7159;
+}
+
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+#filmId{
+    -fx-text-fill:rgba(235, 205, 19, 0.85);
+    -fx-font-weight:bold;
+}
+
+#filmTitle{
+    -fx-font-weight:bold;
+}
+
+#genresText{
+    -fx-text-fill:white;
+    -fx-border-color: grey;
+    -fx-border-width: 1;
+    -fx-border-radius:20;
+}
+
+#filmTitle,#imdbLabel{
+    -fx-font-size:16px;
+}
+
+#ratingLabel{
+    -fx-font-size:16px;
+}
+
+.boldTexts{
+    -fx-font-weight:bold;
+}
+
+.nameLabel{
+    -fx-font-weight:bold;
+    -fx-text-fill:#5799ef;
+}
+
+.nameLabel:hover{
+    -fx-underline: true;
+}
+
+#filmLengthLabel{
+    -fx-font-size:8px;
+    -fx-font-weight:bold;
+}
+
+.slider .thumb {
+    -fx-background-color: rgba(214, 155, 32, 1);
+    -fx-background-radius: 3;
+}
+
+.slider .track {
+    -fx-background-color: rgba(120, 120, 120, 0.5);
+    -fx-background-insets: 0;
+}
+
+Button{
+    -fx-background-color: rgba(235, 205, 19, 0.85);
+    -fx-font-weight:bold;
+    -fx-text-fill:black;
+    -fx-cursor: hand;
+}
+
+Button:hover{
+    -fx-background-radius:50;
+    -fx-background-color: rgba(235, 205, 19, 1);
+}
