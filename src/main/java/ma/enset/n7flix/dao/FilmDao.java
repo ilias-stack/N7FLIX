@@ -12,4 +12,5 @@ public interface FilmDao {
     List<Film> getFilmsByQuery(String query);
     List<Film> getFilmsByCategories(String[] categories);
     List<Film> getFromTo(int start ,int end);
+    List<Film> getWatchedFilms(Integer userId);
 }

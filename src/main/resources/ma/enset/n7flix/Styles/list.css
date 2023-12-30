@@ -1,0 +1,31 @@
+.list-view {
+    -fx-background-color: transparent;
+    -fx-border-width: 0.3px;
+    -fx-border-radius: 4px;
+    -fx-border-color: grey;
+}
+
+.list-cell {
+    -fx-background-color: transparent;
+}
+
+.list-cell:selected {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: #1c1c1c;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #7D7159;
+}
+
+.scroll-pane {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}

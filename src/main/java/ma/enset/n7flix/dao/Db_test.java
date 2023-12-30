@@ -5,7 +5,6 @@ import ma.enset.n7flix.dao.entities.Rating;
 
 public class Db_test {
     public static void main(String[] args) {
-        new RatingDaoImpl().setRating(244,7,0.4f);
-        System.out.println(new RatingDaoImpl().getRating(244,7));
+        System.out.println(new FilmDaoImp().getWatchedFilms(24).size());
     }
 }

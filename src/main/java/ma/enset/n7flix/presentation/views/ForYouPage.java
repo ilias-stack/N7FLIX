@@ -15,6 +15,7 @@ public class ForYouPage extends Scene {
         super(new FXMLLoader(Main.class.getResource("FXML/forYou-view.fxml")).load());
         this.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/ma/enset/n7flix/Styles/global.css")).toExternalForm());
         this.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/ma/enset/n7flix/Styles/home.css")).toExternalForm());
+        this.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/ma/enset/n7flix/Styles/list.css")).toExternalForm());
 
         Label usernameLabel=(Label) this.lookup("#username");
         usernameLabel.setText(Main.currentUser.getUsername());

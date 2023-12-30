@@ -2,6 +2,7 @@ package ma.enset.n7flix.dao;
 
 
 import ma.enset.n7flix.dao.entities.Film;
+import ma.enset.n7flix.dao.entities.Rating;
 
 import java.sql.*;
 import java.sql.DriverManager;
@@ -217,5 +218,15 @@ public class FilmDaoImp implements FilmDao{
             e.printStackTrace();
         }
         return list;
+    }
+
+    @Override
+    public List<Film> getWatchedFilms(Integer userId) {
+        List<Film> watchedFilms = new ArrayList<>();
+        RatingDaoImpl ratings = new RatingDaoImpl();
+        for(Rating r : ratings.getAllRatingOf(userId))
+            watchedFilms.add(getFilmById(r.getMovieId()));
+
+        return watchedFilms;
     }
 }
