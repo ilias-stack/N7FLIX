@@ -36,6 +36,25 @@ public class RatingDaoImpl implements RatingDao {
     }
 
     @Override
+    public List<Rating> getPositiveRatingsOf(Integer userId) {
+        List<Rating> ratings = new ArrayList<>();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM ratings where userid=? and rating>0.5");
+            preparedStatement.setInt(1,userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next())
+                ratings.add(new Rating(resultSet.getInt(1), resultSet.getFloat(2),
+                        resultSet.getInt(3), resultSet.getInt(4)));
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return ratings;
+    }
+
+    @Override
     public void setRating(Integer movieId, Integer userId, float rate) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO ratings (movieId, userId, rating) VALUES (?, ?, ?) " +
