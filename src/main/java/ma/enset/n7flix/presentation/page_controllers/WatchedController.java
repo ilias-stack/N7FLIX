@@ -125,12 +125,10 @@ public class WatchedController {
                             throw new RuntimeException(ex);
                         }
                     });
-
                     deleteOption.setOnAction(e->{
                         new RatingDaoImpl().deleteRating(thisFilm.getId(), Main.currentUser.getId());
-                        initialize();
+                        filmList.getItems().remove(container);
                     });
-
 
                     container.setOnMouseClicked(e->{
                         if (e.getButton() == MouseButton.SECONDARY)
