@@ -3,20 +3,21 @@ package ma.enset.n7flix.presentation.page_controllers;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import ma.enset.n7flix.Main;
 import ma.enset.n7flix.dao.FilmDaoImp;
+import ma.enset.n7flix.dao.RatingDaoImpl;
 import ma.enset.n7flix.dao.entities.Film;
 import ma.enset.n7flix.presentation.views.AllPage;
 import ma.enset.n7flix.presentation.views.ForYouPage;
+import ma.enset.n7flix.presentation.views.RatingPage;
 import ma.enset.n7flix.presentation.views.WatchedPage;
 
 import java.io.IOException;
@@ -40,6 +41,7 @@ public class WatchedController {
 
     @FXML
     private void initialize(){
+        filmList.getItems().clear();
         //navigation buttons block
         {
             allButton.setOnMouseClicked(e -> {
@@ -109,6 +111,32 @@ public class WatchedController {
 
                     container.getChildren().add(posterImage);
                     container.getChildren().add(verticalContainer);
+
+                    ContextMenu contextMenu = new ContextMenu();
+                    contextMenu.setStyle("-fx-background-color:#1c1c1c;");
+                    MenuItem rateOption = new MenuItem("Update");
+                    MenuItem deleteOption = new MenuItem("Delete");
+                    contextMenu.getItems().addAll(rateOption, deleteOption);
+
+                    rateOption.setOnAction(e->{
+                        try {
+                            new RatingPage(thisFilm);
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                    });
+
+                    deleteOption.setOnAction(e->{
+                        new RatingDaoImpl().deleteRating(thisFilm.getId(), Main.currentUser.getId());
+                        initialize();
+                    });
+
+
+                    container.setOnMouseClicked(e->{
+                        if (e.getButton() == MouseButton.SECONDARY)
+                            contextMenu.show(container, e.getScreenX(), e.getScreenY());
+
+                    });
 
                     filmList.getItems().add(container);
 

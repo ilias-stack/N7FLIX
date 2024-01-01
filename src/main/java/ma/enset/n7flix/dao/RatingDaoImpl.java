@@ -68,7 +68,7 @@ public class RatingDaoImpl implements RatingDao {
 
     @Override
     public void deleteRating(Integer movieId, Integer userId) {
-        try(PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM ratings where userid=? and movieid=?")){
+        try(PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM ratings where userid=? and movieid=?")){
             preparedStatement.setInt(1,userId);
             preparedStatement.setInt(2,movieId);
             preparedStatement.executeUpdate();
