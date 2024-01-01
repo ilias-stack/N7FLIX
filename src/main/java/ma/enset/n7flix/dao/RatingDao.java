@@ -8,5 +8,6 @@ public interface RatingDao {
     List<Rating> getAllRatingOf(Integer userId);
     void setRating(Integer movieId,Integer userId,float rate);
     float getRating(Integer movieId,Integer userId);
+    void deleteRating(Integer movieId,Integer userId);
 
 }

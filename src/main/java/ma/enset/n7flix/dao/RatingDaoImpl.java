@@ -65,4 +65,15 @@ public class RatingDaoImpl implements RatingDao {
         }
         return -1;
     }
+
+    @Override
+    public void deleteRating(Integer movieId, Integer userId) {
+        try(PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM ratings where userid=? and movieid=?")){
+            preparedStatement.setInt(1,userId);
+            preparedStatement.setInt(2,movieId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
