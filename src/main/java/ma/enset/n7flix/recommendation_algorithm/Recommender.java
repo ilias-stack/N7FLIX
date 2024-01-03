@@ -14,14 +14,13 @@ public class Recommender {
     final FilmDaoImp films;
     final RatingDaoImpl ratings;
 
-    private HashMap<Integer,Double> filmScore=new HashMap<>();
     public Recommender(Integer id){
         this.userId = id;
         films = new FilmDaoImp();
         ratings = new RatingDaoImpl();
     }
 
-    public List<Film> getLikedFilms(){
+    private List<Film> getLikedFilms(){
         var positiveRates = ratings.getPositiveRatingsOf(userId);
         List<Film> likedFilms = new ArrayList<>();
 
@@ -31,7 +30,7 @@ public class Recommender {
         return likedFilms;
     }
 
-    public byte[] filmGenreToByteArray(String genre1,String genre2){
+    private byte[] filmGenreToByteArray(String genre1,String genre2){
         String[] genre1Array = genre1.split(", ");
         String[] genre2Array = genre2.split(", ");
         byte[] byteArray = new byte[Math.max(genre1Array.length,genre2Array.length)];
@@ -44,7 +43,29 @@ public class Recommender {
                 }
             }
 
-        System.out.println(Arrays.toString(byteArray));
         return byteArray;
     }
+
+    public List<FilmRecommendation> getRecommendedFilms(){
+        List<FilmRecommendation> filmRecommendationList=new ArrayList<>();
+        final String sentence = "This film is similar to ";
+        var onesByteArray = new byte[]{1,1,1};
+        for (var unwatchedFilm:films.getUnwatchedFilms(userId)){
+            var filmRecommendation = new FilmRecommendation();
+            for (var thisRanking : ratings.getPositiveRatingsOf(userId)){
+                Film likedFilm = films.getFilmById(thisRanking.getMovieId());
+
+                var byteArray = filmGenreToByteArray(likedFilm.getGenre(),unwatchedFilm.getGenre());
+                var onesArray = Arrays.copyOfRange(onesByteArray, 0, byteArray.length);
+                double similarity = new CosineSimilarity(onesArray,byteArray).getResult();
+
+                if(similarity>.55){
+                    if(filmRecommendation.score < similarity) filmRecommendation.setAll(unwatchedFilm,sentence+likedFilm.getSeriesTitle(), (float) similarity);
+                }
+            }
+            if(filmRecommendation.score!=-1) filmRecommendationList.add(filmRecommendation);
+        }
+        return filmRecommendationList;
+    }
+
 }
