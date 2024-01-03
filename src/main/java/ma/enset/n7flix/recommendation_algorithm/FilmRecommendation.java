@@ -23,6 +23,9 @@ public class FilmRecommendation{
         this.score = score;
     }
 
+    public float getScore(){
+        return this.score;
+    }
     @Override
     public String toString() {
         return "FilmRecommendation{" +

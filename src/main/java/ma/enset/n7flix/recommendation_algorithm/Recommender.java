@@ -4,10 +4,7 @@ import ma.enset.n7flix.dao.FilmDaoImp;
 import ma.enset.n7flix.dao.RatingDaoImpl;
 import ma.enset.n7flix.dao.entities.Film;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Recommender {
     final Integer userId;
@@ -65,6 +62,8 @@ public class Recommender {
             }
             if(filmRecommendation.score!=-1) filmRecommendationList.add(filmRecommendation);
         }
+        filmRecommendationList.sort(Comparator.comparing(FilmRecommendation::getScore).reversed());
+
         return filmRecommendationList;
     }
 
