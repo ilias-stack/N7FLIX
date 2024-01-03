@@ -56,7 +56,7 @@ public class Recommender {
                 var onesArray = Arrays.copyOfRange(onesByteArray, 0, byteArray.length);
                 double similarity = new CosineSimilarity(onesArray,byteArray).getResult();
 
-                if(similarity>.55){
+                if(similarity>.7){
                     if(filmRecommendation.score < similarity) filmRecommendation.setAll(unwatchedFilm,sentence+likedFilm.getSeriesTitle(), (float) similarity);
                 }
             }
