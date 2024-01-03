@@ -229,4 +229,45 @@ public class FilmDaoImp implements FilmDao{
 
         return watchedFilms;
     }
+
+    @Override
+    public List<Film> getUnwatchedFilms(Integer userId) {
+        List<Film> list = new ArrayList<>();
+
+        Connection connection = DbSingleton.getConnection();
+
+        try{
+            PreparedStatement pst = connection.prepareStatement("SELECT * FROM movies where id not in (select movieId from ratings where userid=?)");
+            pst.setInt(1,userId);
+            ResultSet rst = pst.executeQuery() ;
+
+            while (rst.next()) {
+                Film film = new Film();
+                film.setId(rst.getInt("id"));
+                film.setPosterLink(rst.getString("Poster_Link"));
+                film.setSeriesTitle(rst.getString("Series_Title"));
+                film.setReleasedYear(rst.getInt("Released_Year"));
+                film.setCertificate(rst.getString("Certificate"));
+                film.setRuntime(rst.getInt("Runtime"));
+                film.setGenre(rst.getString("Genre"));
+                film.setImdbRating(rst.getDouble("IMDB_Rating"));
+                film.setOverview(rst.getString("Overview"));
+                film.setMetaScore(rst.getInt("Meta_score"));
+                film.setDirector(rst.getString("Director"));
+                film.setStar1(rst.getString("Star1"));
+                film.setStar2(rst.getString("Star2"));
+                film.setStar3(rst.getString("Star3"));
+                film.setStar4(rst.getString("Star4"));
+                film.setNoOfVotes(rst.getInt("No_of_Votes"));
+                film.setGross(rst.getDouble("Gross"));
+
+                list.add(film);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
 }
