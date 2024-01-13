@@ -56,6 +56,7 @@ public class SignUpController {
             ((Stage) minimiseButton.getScene().getWindow()).close();
             new HomeStage();
         } catch (SQLException e) {
+            e.printStackTrace();
             new AlertBox("Error!","Email or username already in use.");
         }
     }

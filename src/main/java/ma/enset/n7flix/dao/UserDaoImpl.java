@@ -32,13 +32,17 @@ public class UserDaoImpl implements UserDao{
     @Override
     public User createUser(User user) throws SQLException {
         Connection connection = DbSingleton.getConnection();
-        PreparedStatement pst=connection.prepareStatement("insert into users (username,email,password,birthday) values(?,?,?,?)");
+        PreparedStatement pst=connection.prepareStatement("insert into users (username,email,password,birthday) values(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
         pst.setString(1,user.getUsername());
         pst.setString(2,user.getEmail());
         pst.setString(3,user.getPassword());
         pst.setString(4,user.getBirthDay());
 
         pst.executeUpdate();
+
+        ResultSet generatedKeys = pst.getGeneratedKeys();
+        if (generatedKeys.next())
+            user.setId(generatedKeys.getInt(1));
 
         return user;
     }
